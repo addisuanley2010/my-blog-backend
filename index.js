@@ -2,13 +2,13 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
-const { MONGODB_URL, PORT } = require("./config");
+const { MONGODB_URL, port } = require("./config");
 const postRoutes = require("./routes/postRoutes");
 const userRoutes = require("./routes/userRoutes");
 const { notFound, handleError } = require("./middleware/errorMiddleware");
 
 app.use(express.json());
-app.use(express.urlencoded());
+// app.use(express.urlencoded());
  
  
 //default cors policy
@@ -32,6 +32,6 @@ app.use(notFound);
 app.use(handleError);
 
 mongoose.connect(MONGODB_URL).then(() => {
-  app.listen(PORT, () => console.log(` app listening on port ${PORT}`));
+  app.listen(port, () => console.log(` app listening on port ${port}`));
 });
     

@@ -5,9 +5,9 @@ require('dotenv').config()
 const SECRET_KEY=process.env.SECRET_KEY
 
 
-  const PORT=process.env.PORT|| process.env.port
+  const port=process.env.PORT|| process.env.port
 
 
 
- module.exports  ={MONGODB_URL , PORT,SECRET_KEY};
+ module.exports  ={MONGODB_URL , port,SECRET_KEY};
  
