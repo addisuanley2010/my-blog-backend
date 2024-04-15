@@ -31,11 +31,7 @@ app.use("/api/users", userRoutes);
 app.use(notFound);
 app.use(handleError);
 
-mongoose.connect('mongodb+srv://addisuanley2010:epPzloBHzd8eP8kR@blog.wcj84wf.mongodb.net/my-blog',{
-  useNewUrlParser: "true",
-  useUnifiedTopology: "true"
-
-}).then(() => {
+mongoose.connect(MONGODB_URL).then(() => {
   app.listen(PORT, () => console.log(` app listening on port ${PORT}`));
 });
     
