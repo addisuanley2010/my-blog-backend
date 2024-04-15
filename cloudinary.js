@@ -3,10 +3,9 @@ require("dotenv").config();
 
 // Configure Cloudinary with your API credentials
 cloudinary.config({
-  cloud_name: process.env.Cloud_name,
-  api_key: process.env.API_key,
-  api_secret: process.env.API_secret,
+  CLOUD_NAME: process.env.CLOUD_NAME,
+  API_KEY: process.env.API_KEY,
+  API_SECRET: process.env.API_SECRET,
 });
 
 module.exports = cloudinary;
-  
