@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
-const { mongodb_url, port } = require("./config");
+const { MONGODB_URL, PORT } = require("./config");
 const postRoutes = require("./routes/postRoutes");
 const userRoutes = require("./routes/userRoutes");
 const { notFound, handleError } = require("./middleware/errorMiddleware");
@@ -31,7 +31,7 @@ app.use("/api/users", userRoutes);
 app.use(notFound);
 app.use(handleError);
 
-mongoose.connect(mongodb_url).then(() => {
-  app.listen(port, () => console.log(` app listening on port ${port}`));
+mongoose.connect(MONGODB_URL).then(() => {
+  app.listen(PORT, () => console.log(` app listening on port ${PORT}`));
 });
     
