@@ -6,7 +6,6 @@ const authMiddleware = async (req, res, next) => {
 
   if (Authorization && Authorization.startsWith("Bearer")) {
     const token = Authorization.split(" ")[1];
-
     jwt.verify(token, SECRET_KEY, (err, info) => {
       if (err) {
         res.json({

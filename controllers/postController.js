@@ -3,6 +3,7 @@ const userModel = require("../models/userModel");
 const cloudinary = require("../cloudinary");
 
 const fs = require("fs");
+const likeModel = require("../models/likeModel");
 
 const createPost = async (req, res, next) => {
   try {
@@ -62,9 +63,17 @@ const createPost = async (req, res, next) => {
 // ......................................................
 const getAllPosts = async (req, res, next) => {
   try {
-    const posts = await postModel.find().sort({ updatedAt: -1 });
+    const posts = await postModel.find().sort({ createdAt: -1 });
+
+    const postsWithLikesCount = posts.map((post) => {
+      const likesCount = post.likes.length;
+      return {
+        ...post._doc,
+        likesCount,
+      };
+    });
     res.json({
-      message: posts,
+      message: postsWithLikesCount,
     });
   } catch (error) {
     res.json({
@@ -91,8 +100,7 @@ const getSinglePost = async (req, res, next) => {
       message: error.message,
     });
   }
-};     
-
+};
 
 // ......................................................
 const getPostsByCatagory = async (req, res, next) => {

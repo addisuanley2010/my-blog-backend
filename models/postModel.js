@@ -25,9 +25,16 @@ const postSchema = new Schema(
     imagePath: {
       type: String,
     },
+     likes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "likes",
+      },
+    ],
   },
   { timestamps: true }
 );
+
 
 const postModel = model("posts", postSchema);
 
